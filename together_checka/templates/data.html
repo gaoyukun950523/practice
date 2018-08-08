@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .video{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<h3>类型</h3>
+<div>
+    {% for i in type_data %}
+        <a href="{% url 'datas' i.id 0 %}">{{ i.name }}</a>
+    {% endfor %}
+</div>
+<h3>等级</h3>
+<div>
+    {% for j in level_data %}
+        {% if types_id %}
+            <a href="{% url 'datas' types_id j.id%}">{{ j.name }}</a>
+        {% endif %}
+    {% endfor %}
+</div>
+<h3>查询结果</h3>
+<div class="video">
+    {% for k in video_data %}
+        <img src="/{{ k.img }}" alt="">
+    {% endfor %}
+</div>
+</body>
+</html>
