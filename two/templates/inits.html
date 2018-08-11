@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/jquery-3.3.1/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8" src="/static/js1/ueditor.config.js"></script>         {# 引入ueitor #}
+    <script type="text/javascript" charset="utf-8" src="/static/js1/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/static/js1/lang/zh-cn/zh-cn.js"></script>
+    <textarea id="editor" name="gdesc" style="width:100%;height:350px;"></textarea>             {# ueditor放的位置 #}
+
+    {# urditor实例化 #}
+    <script>
+        //实例化编辑器
+        var ue = UE.getEditor('editor', {});
+    </script>
+
+
+    <button class="ssss" onclick="fun1()">你大爷</button>
+    <script>
+      function fun1() {
+          alert(ue.getAllHtml());                                  {# 得到ueditor编辑框中的内容(包括加粗等格式) #}
+          $.ajax({
+              url:"/test/",
+              data:{"datas":ue.getAllHtml()},
+              type:"POST",
+              success:function (a) {
+                  alert(a);
+              }
+          });
+      }
+    </script>
+</body>
+</html>
